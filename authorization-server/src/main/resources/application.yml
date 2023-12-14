@@ -1,0 +1,33 @@
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          example:
+            registration:
+              client-id: "spring"
+              # bcrypt of secret
+              client-secret: "{bcrypt}$2a$10$mGIpefrh5y787X3VBdWUv.FJu5Qmx7.JWCWEw/QuYB1HbZRakNMdK"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+                - "client_credentials"
+              redirect-uris:
+                - "http://127.0.0.1/login/oauth2/code/example"
+              scopes:
+                - "openid"
+                - "profile"
+                - "email"
+                - "phone"
+                - "address"
+            require-authorization-consent: true
+    user:
+      # bcrypt of password
+      password: "{bcrypt}$2a$10$fw01ITlZYDiqRC6Z0UCHqujkkbAV4U1w9OPE9nEVJV/NGnyhOMFcW"
+server:
+  port: 9090
+logging:
+  level:
+    org.springframework.security: trace
